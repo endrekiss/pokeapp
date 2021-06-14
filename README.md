@@ -10,6 +10,11 @@ yarn install
 yarn serve
 ```
 
+### Run unit tests
+```
+npm run test:unit
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
