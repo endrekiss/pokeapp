@@ -1,4 +1,4 @@
 module.exports = {
-    setupFiles: ['./tests/setup.js'], // <- add this
+    setupFiles: ['./tests/setup.js'],
     preset: '@vue/cli-plugin-unit-jest'
 }
