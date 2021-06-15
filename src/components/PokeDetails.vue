@@ -113,10 +113,6 @@
         <p class="my-4">{{ modalInfo }}</p>
       </b-modal>
 
-      <b-modal id="error-modal" title="Pokéapi ERROR" ok-only>
-        <p class="my-4"><strong>{{ errorInfo }}</strong></p>
-      </b-modal>
-
     </b-card-body>
   </b-card>
 
@@ -134,8 +130,7 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
-      modalInfo: '',
-      errorInfo: ''
+      modalInfo: ''
     }
   },
   computed: {
