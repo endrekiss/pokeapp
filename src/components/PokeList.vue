@@ -55,12 +55,14 @@ export default {
       this.$axios
           .get('https://pokeapi.co/api/v2/pokemon/?offset=' + ((this.currentPage-1) * this.perPage) + '&limit=' + this.perPage)
           .then(response => (this.result = response.data))
+          .catch(error => alert('Pokéapi ' + error))
     },
     pokeclick(url) {
       this.myurl = url
       this.$axios
           .get(url)
           .then(response => (this.$parent.pokemon = response.data))
+          .catch(error => alert('Pokéapi ' + error))
 
     }
   },

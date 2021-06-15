@@ -11,7 +11,7 @@ Vue.use(IconsPlugin)
 
 
 describe('Test real Pokémon data', () => {
-    it('renders a div', () => {
+    it('pokemon name is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
@@ -22,7 +22,7 @@ describe('Test real Pokémon data', () => {
 })
 
 describe('Test real Pokémon ability', () => {
-    it('renders a div', () => {
+    it('pokemon ability is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
@@ -33,7 +33,7 @@ describe('Test real Pokémon ability', () => {
 })
 
 describe('Test real Pokémon move', () => {
-    it('renders a div', () => {
+    it('pokémon move is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
@@ -45,7 +45,7 @@ describe('Test real Pokémon move', () => {
 
 
 describe('Test real Pokémon stat', () => {
-    it('renders a div', () => {
+    it('pokémon stat is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
@@ -56,7 +56,7 @@ describe('Test real Pokémon stat', () => {
 })
 
 describe('Test real Pokémon type', () => {
-    it('renders a div', () => {
+    it('pokémon type is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
@@ -67,7 +67,7 @@ describe('Test real Pokémon type', () => {
 })
 
 describe('Test real Pokémon evolution', () => {
-    it('renders a div', () => {
+    it('pokémon evolution is OK', () => {
         const wrapper = mount(PokeDetails, {
             propsData: {
                 pokemon: pokemonData

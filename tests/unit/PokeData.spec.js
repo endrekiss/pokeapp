@@ -8,7 +8,7 @@ Vue.use(IconsPlugin)
 
 const pokemonData = {
     name: "Test Pokémon",
-    order: 0,
+    order: 444,
     abilities: {},
     types: {},
     stats: {},
@@ -24,12 +24,23 @@ const pokemonData = {
 }
 
 describe('Test Pokémon data', () => {
-    it('renders a div', () => {
+    it('test a pokemon', () => {
         const wrapper = mount(PokeDatas, {
             propsData: {
                 pokemon: pokemonData
             }
         })
         expect(wrapper.props().pokemon.name).toBe('Test Pokémon')
+    })
+})
+
+describe('Test real Pokémon evolution', () => {
+    it('pokémon order is OK', () => {
+        const wrapper = mount(PokeDatas, {
+            propsData: {
+                pokemon: pokemonData
+            }
+        })
+        expect(wrapper.props().pokemon.order).toBe(444)
     })
 })
