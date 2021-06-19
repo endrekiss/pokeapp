@@ -27,9 +27,11 @@
     </b-card>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+import axios from 'axios'
 
-export default {
+export default defineComponent({
   name: 'PokeList',
   props: {
     msg: String
@@ -48,21 +50,18 @@ export default {
     this.loadData()
   },
   methods: {
-    isActive(url) {
+    isActive(url: any) {
       return url === this.myurl
     },
     loadData() {
-      this.$axios
+      axios
           .get('https://pokeapi.co/api/v2/pokemon/?offset=' + ((this.currentPage-1) * this.perPage) + '&limit=' + this.perPage)
           .then(response => (this.result = response.data))
           .catch(error => alert('Pokéapi ' + error))
     },
-    pokeclick(url) {
+    pokeclick(url: string) {
       this.myurl = url
-      this.$axios
-          .get(url)
-          .then(response => (this.$parent.pokemon = response.data))
-          .catch(error => alert('Pokéapi ' + error))
+      this.$emit('myEvent', url)
 
     }
   },
@@ -71,6 +70,6 @@ export default {
       this.loadData()
     }
   }
-}
+})
 </script>
 

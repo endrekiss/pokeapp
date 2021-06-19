@@ -2,7 +2,7 @@
   <div id="app">
     <b-container class="bv-example-row">
       <b-card-group style="width: 100%">
-        <PokeList msg="Welcome to Your Vue.js App"/>
+        <PokeList v-on:myEvent="pokeClick" />
         <PokeDatas :pokemon="pokemon"/>
         <PokeDetails :pokemon="pokemon"/>
       </b-card-group>
@@ -14,11 +14,20 @@
 import PokeList from './components/PokeList.vue'
 import PokeDatas from './components/PokeDatas.vue'
 import PokeDetails from './components/PokeDetails.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
     PokeList, PokeDatas, PokeDetails
+  },
+  methods: {
+    pokeClick(url) {
+      axios
+          .get(url)
+          .then(response => (this.pokemon = response.data))
+          .catch(error => alert('Pokéapi ' + error))
+    },
   },
   data () {
     return {
