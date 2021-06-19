@@ -46,14 +46,14 @@
 
             <b-pagination
                 v-model="currentPage"
-                :total-rows="rows"
+                :total-rows="pokemon.moves.length"
                 :per-page="perPage"
                 aria-controls="my-table"
             ></b-pagination>
 
             <b-table
                 id="my-table"
-                :items="items"
+                :items="items()"
                 :per-page="perPage"
                 :current-page="currentPage"
                 small
@@ -61,7 +61,7 @@
 
             <b-pagination
                 v-model="currentPage"
-                :total-rows="rows"
+                :total-rows="pokemon.moves.length"
                 :per-page="perPage"
                 aria-controls="my-table"
             ></b-pagination>
@@ -118,40 +118,42 @@
 
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+import axios from 'axios'
+
+export default defineComponent({
   name: 'PokeDatas',
   props: {
     pokemon: {
       type: Object,
     },
   },
-  data () {
-    return {
-      perPage: 10,
-      currentPage: 1,
-      modalInfo: ''
-    }
-  },
-  computed: {
-    rows() {
-      return this.pokemon.moves.length
+    data () {
+      return {
+        perPage: 10,
+        currentPage: 1,
+        modalInfo: '',
+        rows: 0,
+      }
     },
-    items() {
-      let moveitems = [];
-      this.pokemon.moves.forEach(function callbackFn(element) {
-        moveitems.push({ 'move': element.move.name })
-      })
-      return moveitems
-    }
-  },
-  methods: {
-    showAbility(ability) {
+    rows() {
+      return this.pokemon?.moves.length
+    },
+    methods: {
+      items() {
+        let moveitems: { move: any; }[] = [];
+        this.pokemon?.moves.forEach(function callbackFn(element: { move: { name: any; }; }) {
+          moveitems.push({ 'move': element.move.name })
+        })
+        return moveitems
+      },
+    showAbility(ability: { ability: { url: any; }; }) {
       this.getAbility(ability.ability.url)
       this.$bvModal.show('ability-modal')
     },
-    getAbility(url) {
-      this.$axios
+    getAbility(url: any) {
+     axios
           .get(url)
           .then(response => (
               this.modalInfo = response.data.effect_entries[0].effect
@@ -159,5 +161,5 @@ export default {
           .catch(error => this.modalInfo = 'Pokéapi ' + error)
     }
   }
-}
+})
 </script>
