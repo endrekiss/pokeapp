@@ -4,13 +4,11 @@
       <b-card-body>
         <template v-if="pokemon.order>0">
 
-          <dl class="row">
-            <h1>{{ pokemon.name }}</h1>
-          </dl>
+          <h1>{{ pokemon.name }}</h1>
 
-          <dl class="row">
+          <div class="row">
             <b-img :src="pokemon.sprites.other['official-artwork'].front_default" fluid :alt="pokemon.name"></b-img>
-          </dl>
+          </div>
 
           <dl class="row">
             <dt class="col-sm-9">order-number</dt>
