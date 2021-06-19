@@ -8,17 +8,6 @@ const pokemonData = require("./pokemonData.json");
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-describe('Test real Pokémon data', () => {
-    it('pokemon name is OK', () => {
-        const wrapper = mount(PokeDetails, {
-            propsData: {
-                pokemon: pokemonData
-            }
-        })
-        expect(wrapper.props().pokemon.name).toBe('wartortle')
-    })
-})
-
 describe('Test real Pokémon ability', () => {
     it('pokemon ability is OK', () => {
         const wrapper = mount(PokeDetails, {
