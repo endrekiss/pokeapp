@@ -58,20 +58,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue",
-      "ts"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
-  }
+  ]
 }

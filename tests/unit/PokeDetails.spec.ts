@@ -1,16 +1,24 @@
-import { mount } from '@vue/test-utils'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { render } from '@vue/server-test-utils'
 import PokeDetails from '../../src/components/PokeDetails.vue'
-import Vue from "vue"
 
 const pokemonData = require("./pokemonData.json");
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+describe('List component render', () => {
+    it('renders the content', async () => {
+        const wrapper = await render(PokeDetails,  {
+            propsData: {
+                pokemon: pokemonData
+            }
+        })
+        expect(wrapper.text()).toContain('generation-viii')
+    })
+
+})
+
 
 describe('Test real Pokémon ability', () => {
-    it('pokemon ability is OK', () => {
-        const wrapper = mount(PokeDetails, {
+    it('pokemon ability is OK', async () => {
+        const wrapper = await render(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
             }
@@ -19,21 +27,9 @@ describe('Test real Pokémon ability', () => {
     })
 })
 
-describe('Test real Pokémon move', () => {
-    it('pokémon move is OK', () => {
-        const wrapper = mount(PokeDetails, {
-            propsData: {
-                pokemon: pokemonData
-            }
-        })
-        expect(wrapper.text()).toContain('tail-whip')
-    })
-})
-
-
-describe('Test real Pokémon stat', () => {
-    it('pokémon stat is OK', () => {
-        const wrapper = mount(PokeDetails, {
+describe('Test real Pokémon stat',  () => {
+    it('pokémon stat is OK', async () => {
+        const wrapper = await render(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
             }
@@ -42,9 +38,9 @@ describe('Test real Pokémon stat', () => {
     })
 })
 
-describe('Test real Pokémon type', () => {
-    it('pokémon type is OK', () => {
-        const wrapper = mount(PokeDetails, {
+describe('Test real Pokémon type',  () => {
+    it('pokémon type is OK', async () => {
+        const wrapper = await render(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
             }
@@ -53,9 +49,9 @@ describe('Test real Pokémon type', () => {
     })
 })
 
-describe('Test real Pokémon evolution', () => {
-    it('pokémon evolution is OK', () => {
-        const wrapper = mount(PokeDetails, {
+describe('Test real Pokémon evolution',  () => {
+    it('pokémon evolution is OK', async () => {
+        const wrapper = await render(PokeDetails, {
             propsData: {
                 pokemon: pokemonData
             }
@@ -63,4 +59,3 @@ describe('Test real Pokémon evolution', () => {
         expect(wrapper.text()).toContain('generation-viii')
     })
 })
-
