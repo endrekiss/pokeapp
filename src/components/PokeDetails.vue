@@ -120,7 +120,8 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import axios from 'axios'
+import { Pokeapiservice } from "../Pokeapiservice";
+
 
 export default defineComponent({
   name: 'PokeDatas',
@@ -152,13 +153,15 @@ export default defineComponent({
       this.getAbility(ability.ability.url)
       this.$bvModal.show('ability-modal')
     },
-    getAbility(url: any) {
-     axios
-          .get(url)
+    getAbility(url: string) {
+
+      const api = new Pokeapiservice()
+      api.getAbility(url)
           .then(response => (
-              this.modalInfo = response.data.effect_entries[0].effect
+              this.modalInfo = response.effect_entries[0].effect
           ))
           .catch(error => this.modalInfo = 'Pokéapi ' + error)
+
     }
   }
 })

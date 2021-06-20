@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import axios from 'axios'
+import { Pokeapiservice } from "../Pokeapiservice";
 
 export default defineComponent({
   name: 'PokeList',
@@ -40,24 +40,26 @@ export default defineComponent({
     return {
       myurl: '',
       result: {
-        count: 0,
+
       },
       perPage: 15,
       currentPage: 1
     }
   },
   mounted() {
-    this.loadData()
+    this.loadPokemons()
   },
   methods: {
     isActive(url: any) {
       return url === this.myurl
     },
-    loadData() {
-      axios
-          .get('https://pokeapi.co/api/v2/pokemon/?offset=' + ((this.currentPage-1) * this.perPage) + '&limit=' + this.perPage)
-          .then(response => (this.result = response.data))
-          .catch(error => alert('Pokéapi ' + error))
+    loadPokemons() {
+      const api = new Pokeapiservice()
+      api.loadData(this.currentPage, this.perPage)
+      .then(response => (
+          this.result = response
+      ))
+      .catch(error => alert('Pokéapi ' + error))
     },
     pokeclick(url: string) {
       this.myurl = url
@@ -67,7 +69,7 @@ export default defineComponent({
   },
   watch: {
     currentPage: function () {
-      this.loadData()
+      this.loadPokemons()
     }
   }
 })

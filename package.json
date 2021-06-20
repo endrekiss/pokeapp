@@ -63,7 +63,8 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "vue"
+      "vue",
+      "ts"
     ],
     "transform": {
       ".*\\.(vue)$": "vue-jest"
