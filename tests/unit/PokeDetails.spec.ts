@@ -3,19 +3,6 @@ import PokeDetails from '../../src/components/PokeDetails.vue'
 
 const pokemonData = require("./pokemonData.json");
 
-describe('List component render', () => {
-    it('renders the content', async () => {
-        const wrapper = await render(PokeDetails,  {
-            propsData: {
-                pokemon: pokemonData
-            }
-        })
-        expect(wrapper.text()).toContain('generation-viii')
-    })
-
-})
-
-
 describe('Test real Pokémon ability', () => {
     it('pokemon ability is OK', async () => {
         const wrapper = await render(PokeDetails, {
@@ -24,6 +11,17 @@ describe('Test real Pokémon ability', () => {
             }
         })
         expect(wrapper.text()).toContain('rain-dish')
+    })
+})
+
+describe('Test real Pokémon move', () => {
+    it('pokémon move is OK', async () => {
+        const wrapper = await render(PokeDetails, {
+            propsData: {
+                pokemon: pokemonData
+            }
+        })
+        expect(wrapper.text()).toContain('wartortle has 76 moves')
     })
 })
 
