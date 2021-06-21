@@ -2,7 +2,7 @@
   <div id="app">
     <b-container class="bv-example-row">
       <b-card-group style="width: 100%">
-        <PokeList v-on:myEvent="pokeClick" />
+        <PokeList v-on:clockOnPokemon="pokeClick" />
         <PokeDatas :pokemon="pokemon"/>
         <PokeDetails :pokemon="pokemon"/>
       </b-card-group>

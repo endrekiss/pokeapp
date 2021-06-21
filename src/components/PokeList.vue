@@ -63,8 +63,7 @@ export default defineComponent({
     },
     pokeclick(url: string) {
       this.myurl = url
-      this.$emit('myEvent', url)
-
+      this.$emit('clockOnPokemon', url)
     }
   },
   watch: {
